@@ -51,6 +51,8 @@ const getAnalyticsData = async (req, res) => {
         // For accurate Buy vs Sell Volumes chart, we might need to aggregate transactions manually or add fields.
         // Let's aggregate transactions for volumes to be precise.
 
+        const { formatLocal } = require('../utils/dateUtils');
+
         const chartData = stats.map(stat => {
             // Find transactions for this day to split volumes
             const dayStart = new Date(stat.date);
@@ -62,7 +64,7 @@ const getAnalyticsData = async (req, res) => {
             const sellVolume = dayTrans.filter(t => t.type === 'SELL').reduce((acc, t) => acc + t.units, 0);
 
             return {
-                date: stat.date,
+                date: formatLocal(stat.date),
                 revenue: stat.revenue,
                 profit: stat.profit,
                 buyVolume,
@@ -85,7 +87,7 @@ const getAnalyticsData = async (req, res) => {
             },
             chartData,
             insights: {
-                mostProfitableDate: mostProfitable ? mostProfitable.date : null,
+                mostProfitableDate: mostProfitable ? formatLocal(mostProfitable.date) : null,
                 mostProfitableAmount: mostProfitable ? mostProfitable.profit : 0,
                 bestSellingWindow: "17:00 - 19:00" // Hardcoded/Mock for now as we don't track hourly resolution in stats
             }

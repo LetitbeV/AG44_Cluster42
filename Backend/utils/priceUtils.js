@@ -1,58 +1,110 @@
-// Deterministic price generator based on 15-minute intervals
-// Use a seed-based approach so the same timestamp always yields the same price
+const axios = require('axios');
 
-const getPriceForDate = (dateStringOrDate) => {
-    const date = new Date(dateStringOrDate);
+// Cache configuration
+let priceCache = null;
+let lastFetchTime = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes (or 15 min since intervals are 15 min)
 
-    // Normalize to nearest 15-minute interval
-    // Round down minutes to 0, 15, 30, 45
-    const minutes = date.getMinutes();
+// Helper to fetch prices from external API
+const fetchPrices = async () => {
+    const now = Date.now();
+    if (priceCache && (now - lastFetchTime < CACHE_DURATION)) {
+        return priceCache;
+    }
+
+    try {
+        const response = await axios.get('http://localhost:5000/api/prices');
+        // External API returns: { count: 96, forecast_date: "...", prices: [ { timestamp, actual_price, predicted_price } ] }
+
+        if (response.data && response.data.prices) {
+            priceCache = response.data.prices;
+            lastFetchTime = now;
+            return priceCache;
+        } else {
+            throw new Error('Invalid price data format');
+        }
+    } catch (error) {
+        console.error('Error fetching prices:', error.message);
+        // Fallback: If cache exists (even old), use it. Or throw.
+        if (priceCache) return priceCache;
+        throw error;
+    }
+};
+
+const getPriceForDate = async (dateStringOrDate) => {
+    // Force "Local" interpretation of the input string by removing 'Z' (UTC marker) if present
+    let inputString = dateStringOrDate;
+    if (typeof dateStringOrDate === 'string') {
+        inputString = dateStringOrDate.replace('Z', '');
+    }
+    const targetDate = new Date(inputString);
+
+    // Normalize target to nearest 15-minute interval (similar to external API timestamps)
+    // External API format: "YYYY-MM-DD HH:mm:ss"
+    // We need to match timestamps.
+    const minutes = targetDate.getMinutes();
     const roundedMinutes = Math.floor(minutes / 15) * 15;
+    targetDate.setMinutes(roundedMinutes, 0, 0);
 
-    const intervalDate = new Date(date);
-    intervalDate.setMinutes(roundedMinutes, 0, 0); // Seconds and MS to 0
+    const prices = await fetchPrices();
 
-    // Create a seed from the interval timestamp
-    const timestampv = intervalDate.getTime();
+    // Find matching price
+    // We compare timestamps. The external API uses local strings "YYYY-MM-DD HH:mm:ss".
+    // We need to be careful with Timezones. Assuming API returns local time string.
+    // Let's try to match by converting our targetDate to the same string format if possible, 
+    // OR parse the API timestamp strings into Date objects.
 
-    // Simple deterministic pseudo-random generator function
-    // Using sine function to simulate somewhat realistic oscillating prices around a mean
-    // Time is in ms, so divide by a larger number to make the wave slower/faster
-    // A day has 96 intervals of 15 mins.
+    const targetTime = targetDate.getTime();
 
-    // Factors:
-    // 1. Daily Cycle (Sine wave period 24h)
-    // 2. Random noise (based on hash of timestamp)
+    // Find best match
+    const match = prices.find(p => {
+        // Parse API timestamp "2026-01-24 00:00:00"
+        // Note: Date.parse("2026-01-24 00:00:00") might assume UTC or Local depending on browser/node.
+        // It's safer to treat it consistently.
+        const pDate = new Date(p.timestamp);
+        return Math.abs(pDate.getTime() - targetTime) < 1000; // Within 1 second
+    });
 
-    const hours = intervalDate.getHours() + (roundedMinutes / 60);
+    if (match) {
+        return {
+            timestamp: targetDate,
+            price: match.actual_price // User requested "actual_price"
+        };
+    }
 
-    // Base price curve: Peak at 19:00 (19), Low at 04:00 (4)
-    // Shift sine wave: Peak of sin(x) is at pi/2. 
-    // We want peak at 19h. 2pi * (19/24) ...
-    // Let's just use a simple combined function
+    // Fallback if exact match not found (e.g. date out of range): 
+    // Return nearest or throw. For now, let's return the first one or a default if empty.
+    if (prices.length > 0) {
+        // Find nearest
+        let nearest = prices[0];
+        let minDiff = Math.abs(new Date(nearest.timestamp).getTime() - targetTime);
 
-    // Base: 30
-    // Daily swing: +/- 15
-    // Peak at 18:00 (0.75 of day)
-    const dailySwing = Math.sin(((hours - 6) / 24) * 2 * Math.PI) * 15;
+        for (const p of prices) {
+            const diff = Math.abs(new Date(p.timestamp).getTime() - targetTime);
+            if (diff < minDiff) {
+                minDiff = diff;
+                nearest = p;
+            }
+        }
+        return {
+            timestamp: new Date(nearest.timestamp),
+            price: nearest.actual_price
+        };
+    }
 
-    // Noise: +/- 5
-    // Simple hash
-    const seed = (timestampv / 100000) % 10000;
-    const noise = (Math.sin(seed) * 5);
-
-    let price = 30 + dailySwing + noise;
-
-    // Clamp limits
-    if (price < 5) price = 5;
-    if (price > 100) price = 100;
-
+    // Ultimate fallback if API empty
     return {
-        timestamp: intervalDate,
-        price: parseFloat(price.toFixed(2))
+        timestamp: targetDate,
+        price: 30 // Safe default
     };
 };
 
+// Export raw fetch for priceController to list all
+const getAllPrices = async () => {
+    return await fetchPrices();
+};
+
 module.exports = {
-    getPriceForDate
+    getPriceForDate,
+    getAllPrices
 };

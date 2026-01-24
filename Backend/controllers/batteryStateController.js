@@ -37,24 +37,29 @@ const updateState = async (req, res) => {
             });
         }
 
+
+
         // 3. Get Price for Timestamp
-        const priceData = getPriceForDate(timestamp);
+        const priceData = await getPriceForDate(timestamp);
         const currentPrice = priceData.price;
-        const tradeTime = priceData.timestamp;
+
+        // Use the requested timestamp as the trade time, interpreting as Local Time (strip Z)
+        const tradeTime = new Date(timestamp.replace('Z', ''));
+
+        if (isNaN(tradeTime.getTime())) {
+            return res.status(400).json({ message: 'Invalid timestamp format' });
+        }
 
         // 4. Calculate Energy Change and Validate
         let energyChange = 0;
         let qty = parseFloat(quantity);
 
         if (action === 'BUY') {
-            // Charging: Grid gives qty. Battery receives qty * efficiency
-            energyChange = qty * batteryInfo.chargeEfficiency;
+            energyChange = qty;
             batteryState.status = 'CHARGING';
         } else if (action === 'SELL') {
-            // Discharging: Grid receives qty. Battery loses qty / efficiency 
-            // (Assuming efficiency applies to conversion losses on the way out)
-            // If dischargeEfficiency is e.g. 0.9, then to provide 1 unit to grid, we need 1 / 0.9 units from battery.
-            energyChange = -(qty / batteryInfo.dischargeEfficiency);
+
+            energyChange = -(qty);
             batteryState.status = 'DISCHARGING';
         } else {
             batteryState.status = 'IDLE';
@@ -65,7 +70,7 @@ const updateState = async (req, res) => {
 
         // 6. Validation
         // Allow tiny tolerance for floating point errors
-        if (newEnergy < -0.001) {
+        if (newEnergy < 0) {
             return res.status(400).json({
                 message: 'Invalid action: Battery would be empty',
                 current: batteryState.current_energy_kwh,
@@ -74,7 +79,7 @@ const updateState = async (req, res) => {
             });
         }
 
-        if (newEnergy > batteryState.effective_capacity_kwh + 0.001) {
+        if (newEnergy > batteryState.effective_capacity_kwh) {
             return res.status(400).json({
                 message: 'Invalid action: Battery would overcharge',
                 current: batteryState.current_energy_kwh,
@@ -98,7 +103,7 @@ const updateState = async (req, res) => {
 
         // 8. Create Transaction Record
         // Units = Quantity Traded with Grid
-        await Transaction.create({
+        const transaction = await Transaction.create({
             user: req.user.id,
             battery: batteryInfo._id,
             type: action,
@@ -145,14 +150,21 @@ const updateState = async (req, res) => {
         await stats.save();
         await batteryState.save();
 
+        const { formatLocal } = require('../utils/dateUtils');
+
+        const batteryStateObj = batteryState.toObject();
+        batteryStateObj.last_synced_at = formatLocal(batteryStateObj.last_synced_at);
+        batteryStateObj.createdAt = formatLocal(batteryStateObj.createdAt);
+        batteryStateObj.updatedAt = formatLocal(batteryStateObj.updatedAt);
+
+        const transactionObj = transaction.toObject();
+        transactionObj.timestamp = formatLocal(transactionObj.timestamp);
+        transactionObj.createdAt = formatLocal(transactionObj.createdAt);
+        transactionObj.updatedAt = formatLocal(transactionObj.updatedAt);
+
         res.status(200).json({
-            batteryState,
-            transaction: {
-                action,
-                units: qty,
-                price: currentPrice,
-                timestamp: tradeTime
-            }
+            batteryState: batteryStateObj,
+            transaction: transactionObj
         });
 
     } catch (error) {

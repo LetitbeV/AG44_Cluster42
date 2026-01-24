@@ -1,0 +1,403 @@
+{
+  "forecast_date": "2026-01-24",
+  "buy_signals": [
+    {
+      "time_block": 3,
+      "time": "00:30",
+      "price": 2608.41,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 4,
+      "time": "00:45",
+      "price": 2605.85,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 5,
+      "time": "01:00",
+      "price": 2608.41,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 6,
+      "time": "01:15",
+      "price": 2624.07,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 7,
+      "time": "01:30",
+      "price": 2618.39,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 8,
+      "time": "01:45",
+      "price": 2623.29,
+      "energy_MWh": 0.31,
+      "action": "BUY"
+    },
+    {
+      "time_block": 9,
+      "time": "02:00",
+      "price": 2608.41,
+      "energy_MWh": 0.02,
+      "action": "BUY"
+    },
+    {
+      "time_block": 10,
+      "time": "02:15",
+      "price": 2605.85,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 11,
+      "time": "02:30",
+      "price": 2608.8,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 12,
+      "time": "02:45",
+      "price": 2598.29,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 13,
+      "time": "03:00",
+      "price": 2587.27,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 14,
+      "time": "03:15",
+      "price": 2587.27,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 15,
+      "time": "03:30",
+      "price": 2577.8,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 16,
+      "time": "03:45",
+      "price": 2583.51,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 17,
+      "time": "04:00",
+      "price": 2553.81,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 18,
+      "time": "04:15",
+      "price": 2563.69,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 44,
+      "time": "10:45",
+      "price": 2625.85,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 49,
+      "time": "12:00",
+      "price": 2460.17,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 50,
+      "time": "12:15",
+      "price": 2460.17,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 51,
+      "time": "12:30",
+      "price": 2460.17,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 52,
+      "time": "12:45",
+      "price": 2511.47,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 57,
+      "time": "14:00",
+      "price": 2581.21,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 58,
+      "time": "14:15",
+      "price": 2549.78,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 59,
+      "time": "14:30",
+      "price": 2499.47,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 60,
+      "time": "14:45",
+      "price": 2422.63,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 62,
+      "time": "15:15",
+      "price": 2518.32,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 63,
+      "time": "15:30",
+      "price": 2520.79,
+      "energy_MWh": 0.62,
+      "action": "BUY"
+    },
+    {
+      "time_block": 64,
+      "time": "15:45",
+      "price": 2559.26,
+      "energy_MWh": 0.03,
+      "action": "BUY"
+    },
+    {
+      "time_block": 65,
+      "time": "16:00",
+      "price": 2620.02,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    }
+  ],
+  "sell_signals": [
+    {
+      "time_block": 26,
+      "time": "06:15",
+      "price": 3900.82,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 27,
+      "time": "06:30",
+      "price": 4318.74,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 28,
+      "time": "06:45",
+      "price": 4337.17,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 29,
+      "time": "07:00",
+      "price": 6711.79,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 30,
+      "time": "07:15",
+      "price": 6832.35,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 31,
+      "time": "07:30",
+      "price": 8900.98,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 32,
+      "time": "07:45",
+      "price": 9117.09,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 33,
+      "time": "08:00",
+      "price": 8883.61,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 34,
+      "time": "08:15",
+      "price": 6920.79,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 35,
+      "time": "08:30",
+      "price": 6318.24,
+      "energy_MWh": 0.79,
+      "action": "SELL"
+    },
+    {
+      "time_block": 70,
+      "time": "17:15",
+      "price": 3560.21,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 71,
+      "time": "17:30",
+      "price": 3960.88,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 72,
+      "time": "17:45",
+      "price": 6189.68,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 73,
+      "time": "18:00",
+      "price": 8090.01,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 74,
+      "time": "18:15",
+      "price": 8447.83,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 75,
+      "time": "18:30",
+      "price": 8447.83,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 76,
+      "time": "18:45",
+      "price": 8038.81,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 77,
+      "time": "19:00",
+      "price": 7246.98,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 78,
+      "time": "19:15",
+      "price": 6767.74,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 79,
+      "time": "19:30",
+      "price": 4298.68,
+      "energy_MWh": 0.79,
+      "action": "SELL"
+    }
+  ],
+  "buy_windows": [
+    {
+      "start_time": "00:30",
+      "end_time": "04:15",
+      "avg_price": 2597.7,
+      "total_energy_MWh": 31.58,
+      "num_blocks": 16
+    },
+    {
+      "start_time": "10:45",
+      "end_time": "10:45",
+      "avg_price": 2625.85,
+      "total_energy_MWh": 6.25,
+      "num_blocks": 1
+    },
+    {
+      "start_time": "12:00",
+      "end_time": "12:45",
+      "avg_price": 2472.99,
+      "total_energy_MWh": 25.0,
+      "num_blocks": 4
+    },
+    {
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "avg_price": 2533.93,
+      "total_energy_MWh": 31.9,
+      "num_blocks": 8
+    }
+  ],
+  "sell_windows": [
+    {
+      "start_time": "06:15",
+      "end_time": "08:30",
+      "avg_price": 6624.16,
+      "total_energy_MWh": 57.04,
+      "num_blocks": 10
+    },
+    {
+      "start_time": "17:15",
+      "end_time": "19:30",
+      "avg_price": 6504.86,
+      "total_energy_MWh": 57.04,
+      "num_blocks": 10
+    }
+  ],
+  "thresholds": {
+    "low_threshold": 2629.4,
+    "high_threshold": 3547.16,
+    "avg_buy_price": 2563.88,
+    "avg_sell_price": 5877.59,
+    "price_spread": 3313.71
+  }
+}

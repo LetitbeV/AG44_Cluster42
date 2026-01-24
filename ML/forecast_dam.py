@@ -24,7 +24,7 @@ def make_next_day_blocks(date):
         })
     return pd.DataFrame(rows)
 
-next_day = "2026-01-25"
+next_day = "2026-01-24"
 future = make_next_day_blocks(next_day)
 
 # ============================================================

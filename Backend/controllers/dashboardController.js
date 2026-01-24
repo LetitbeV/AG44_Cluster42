@@ -12,29 +12,26 @@ const getDashboardData = async (req, res) => {
         // 1. Get Financials (Today + History for % change)
         const statsHistory = await FinancialStats.find({ user: req.user.id }).sort({ date: -1 });
 
-        // Today's Stats
-        let todayStats = statsHistory.find(
-            (stat) => stat.date.getTime() === today.getTime()
-        );
+        // Use the most recent stats available (Simulation-friendly)
+        // If no stats at all, defaults to 0
+        let currentStats = statsHistory.length > 0 ? statsHistory[0] : null;
 
-        if (!todayStats) {
-            todayStats = { revenue: 0, cost: 0, profit: 0, energyTraded: 0 };
+        if (!currentStats) {
+            currentStats = { revenue: 0, cost: 0, profit: 0, energyTraded: 0, date: today };
         }
 
-        // Yesterday's Stats (for % change calculation)
-        // Find next entry (index 0 or 1 depending on whether today exists) - simplified assumption: sorted desc
-        const yesterdayStats = statsHistory.find(
-            (stat) => stat.date.getTime() < today.getTime()
-        ) || { revenue: 0, energyTraded: 0 };
+        // Previous Stats (The record immediately before the current one)
+        let previousStats = statsHistory.length > 1 ? statsHistory[1] : null;
+        if (!previousStats) previousStats = { revenue: 0, energyTraded: 0 };
 
-        // Calculate % change (Mock logic if yesterday is 0 avoid infinity, just show 0 or 100)
+        // Calculate % change
         const calculateChange = (current, previous) => {
             if (previous === 0) return current > 0 ? 100 : 0;
             return ((current - previous) / previous) * 100;
         };
 
-        const revenueChange = calculateChange(todayStats.revenue, yesterdayStats.revenue);
-        const energyChange = calculateChange(todayStats.energyTraded, yesterdayStats.energyTraded);
+        const revenueChange = calculateChange(currentStats.revenue, previousStats.revenue);
+        const energyChange = calculateChange(currentStats.energyTraded, previousStats.energyTraded);
 
         // 2. Get Battery State (Health, Power, Temp)
         // Assuming single battery for dashboard for now.
@@ -82,11 +79,14 @@ const getDashboardData = async (req, res) => {
         const peakPrice = 85.20; // Hardcoded or fetch max from priceController logic
         const peakPriceChange = -2.1;
 
+        const { formatLocal } = require('../utils/dateUtils');
+
         res.status(200).json({
             financials: {
-                revenue: todayStats.revenue,
+                date: formatLocal(currentStats.date), // Useful for debugging
+                revenue: currentStats.revenue,
                 revenueChange: revenueChange.toFixed(1),
-                energyTraded: todayStats.energyTraded,
+                energyTraded: currentStats.energyTraded,
                 energyChange: energyChange.toFixed(1)
             },
             market: {

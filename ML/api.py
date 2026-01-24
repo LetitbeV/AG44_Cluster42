@@ -10,6 +10,7 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
+
 CORS(app)
 
 # ============================================================

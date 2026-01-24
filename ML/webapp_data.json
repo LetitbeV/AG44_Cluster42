@@ -1,0 +1,870 @@
+{
+  "forecast_date": "2026-01-24",
+  "generated_at": "2026-01-25T01:04:12.265045",
+  "price_forecast": [
+    {
+      "timestamp": "2026-01-24 00:00:00",
+      "predicted_price": 2691.01,
+      "actual_price": 2378.39
+    },
+    {
+      "timestamp": "2026-01-24 00:15:00",
+      "predicted_price": 2639.0,
+      "actual_price": 2378.37
+    },
+    {
+      "timestamp": "2026-01-24 00:30:00",
+      "predicted_price": 2608.41,
+      "actual_price": 2399.5
+    },
+    {
+      "timestamp": "2026-01-24 00:45:00",
+      "predicted_price": 2605.85,
+      "actual_price": 2378.93
+    },
+    {
+      "timestamp": "2026-01-24 01:00:00",
+      "predicted_price": 2608.41,
+      "actual_price": 2378.51
+    },
+    {
+      "timestamp": "2026-01-24 01:15:00",
+      "predicted_price": 2624.07,
+      "actual_price": 2378.28
+    },
+    {
+      "timestamp": "2026-01-24 01:30:00",
+      "predicted_price": 2618.39,
+      "actual_price": 2364.33
+    },
+    {
+      "timestamp": "2026-01-24 01:45:00",
+      "predicted_price": 2623.29,
+      "actual_price": 2335.75
+    },
+    {
+      "timestamp": "2026-01-24 02:00:00",
+      "predicted_price": 2608.41,
+      "actual_price": 2270.1
+    },
+    {
+      "timestamp": "2026-01-24 02:15:00",
+      "predicted_price": 2605.85,
+      "actual_price": 2277.74
+    },
+    {
+      "timestamp": "2026-01-24 02:30:00",
+      "predicted_price": 2608.8,
+      "actual_price": 2250.92
+    },
+    {
+      "timestamp": "2026-01-24 02:45:00",
+      "predicted_price": 2598.29,
+      "actual_price": 2335.16
+    },
+    {
+      "timestamp": "2026-01-24 03:00:00",
+      "predicted_price": 2587.27,
+      "actual_price": 2335.64
+    },
+    {
+      "timestamp": "2026-01-24 03:15:00",
+      "predicted_price": 2587.27,
+      "actual_price": 2350.6
+    },
+    {
+      "timestamp": "2026-01-24 03:30:00",
+      "predicted_price": 2577.8,
+      "actual_price": 2402.02
+    },
+    {
+      "timestamp": "2026-01-24 03:45:00",
+      "predicted_price": 2583.51,
+      "actual_price": 2410.25
+    },
+    {
+      "timestamp": "2026-01-24 04:00:00",
+      "predicted_price": 2553.81,
+      "actual_price": 2378.24
+    },
+    {
+      "timestamp": "2026-01-24 04:15:00",
+      "predicted_price": 2563.69,
+      "actual_price": 2461.34
+    },
+    {
+      "timestamp": "2026-01-24 04:30:00",
+      "predicted_price": 2651.88,
+      "actual_price": 2470.1
+    },
+    {
+      "timestamp": "2026-01-24 04:45:00",
+      "predicted_price": 2777.0,
+      "actual_price": 2470.94
+    },
+    {
+      "timestamp": "2026-01-24 05:00:00",
+      "predicted_price": 2815.66,
+      "actual_price": 2499.03
+    },
+    {
+      "timestamp": "2026-01-24 05:15:00",
+      "predicted_price": 2878.07,
+      "actual_price": 2600.05
+    },
+    {
+      "timestamp": "2026-01-24 05:30:00",
+      "predicted_price": 2978.41,
+      "actual_price": 2856.5
+    },
+    {
+      "timestamp": "2026-01-24 05:45:00",
+      "predicted_price": 3312.5,
+      "actual_price": 2990.26
+    },
+    {
+      "timestamp": "2026-01-24 06:00:00",
+      "predicted_price": 3534.1,
+      "actual_price": 3549.25
+    },
+    {
+      "timestamp": "2026-01-24 06:15:00",
+      "predicted_price": 3900.82,
+      "actual_price": 3812.01
+    },
+    {
+      "timestamp": "2026-01-24 06:30:00",
+      "predicted_price": 4318.74,
+      "actual_price": 3940.44
+    },
+    {
+      "timestamp": "2026-01-24 06:45:00",
+      "predicted_price": 4337.17,
+      "actual_price": 3950.19
+    },
+    {
+      "timestamp": "2026-01-24 07:00:00",
+      "predicted_price": 6711.79,
+      "actual_price": 4529.4
+    },
+    {
+      "timestamp": "2026-01-24 07:15:00",
+      "predicted_price": 6832.35,
+      "actual_price": 5000.5
+    },
+    {
+      "timestamp": "2026-01-24 07:30:00",
+      "predicted_price": 8900.98,
+      "actual_price": 5500.81
+    },
+    {
+      "timestamp": "2026-01-24 07:45:00",
+      "predicted_price": 9117.09,
+      "actual_price": 5100.08
+    },
+    {
+      "timestamp": "2026-01-24 08:00:00",
+      "predicted_price": 8883.61,
+      "actual_price": 4759.95
+    },
+    {
+      "timestamp": "2026-01-24 08:15:00",
+      "predicted_price": 6920.79,
+      "actual_price": 4362.94
+    },
+    {
+      "timestamp": "2026-01-24 08:30:00",
+      "predicted_price": 6318.24,
+      "actual_price": 3940.29
+    },
+    {
+      "timestamp": "2026-01-24 08:45:00",
+      "predicted_price": 6970.07,
+      "actual_price": 3812.01
+    },
+    {
+      "timestamp": "2026-01-24 09:00:00",
+      "predicted_price": 4729.07,
+      "actual_price": 3554.82
+    },
+    {
+      "timestamp": "2026-01-24 09:15:00",
+      "predicted_price": 4450.7,
+      "actual_price": 3300.75
+    },
+    {
+      "timestamp": "2026-01-24 09:30:00",
+      "predicted_price": 3764.2,
+      "actual_price": 3065.39
+    },
+    {
+      "timestamp": "2026-01-24 09:45:00",
+      "predicted_price": 3420.03,
+      "actual_price": 2980.63
+    },
+    {
+      "timestamp": "2026-01-24 10:00:00",
+      "predicted_price": 2999.29,
+      "actual_price": 2600.65
+    },
+    {
+      "timestamp": "2026-01-24 10:15:00",
+      "predicted_price": 2859.41,
+      "actual_price": 2470.48
+    },
+    {
+      "timestamp": "2026-01-24 10:30:00",
+      "predicted_price": 2632.94,
+      "actual_price": 2430.06
+    },
+    {
+      "timestamp": "2026-01-24 10:45:00",
+      "predicted_price": 2625.85,
+      "actual_price": 2350.37
+    },
+    {
+      "timestamp": "2026-01-24 11:00:00",
+      "predicted_price": 2781.1,
+      "actual_price": 2350.38
+    },
+    {
+      "timestamp": "2026-01-24 11:15:00",
+      "predicted_price": 2781.1,
+      "actual_price": 2250.53
+    },
+    {
+      "timestamp": "2026-01-24 11:30:00",
+      "predicted_price": 2763.21,
+      "actual_price": 2068.94
+    },
+    {
+      "timestamp": "2026-01-24 11:45:00",
+      "predicted_price": 2694.3,
+      "actual_price": 1998.8
+    },
+    {
+      "timestamp": "2026-01-24 12:00:00",
+      "predicted_price": 2460.17,
+      "actual_price": 1871.2
+    },
+    {
+      "timestamp": "2026-01-24 12:15:00",
+      "predicted_price": 2460.17,
+      "actual_price": 1867.22
+    },
+    {
+      "timestamp": "2026-01-24 12:30:00",
+      "predicted_price": 2460.17,
+      "actual_price": 1929.81
+    },
+    {
+      "timestamp": "2026-01-24 12:45:00",
+      "predicted_price": 2511.47,
+      "actual_price": 1852.08
+    },
+    {
+      "timestamp": "2026-01-24 13:00:00",
+      "predicted_price": 2726.34,
+      "actual_price": 1849.19
+    },
+    {
+      "timestamp": "2026-01-24 13:15:00",
+      "predicted_price": 2726.34,
+      "actual_price": 1819.6
+    },
+    {
+      "timestamp": "2026-01-24 13:30:00",
+      "predicted_price": 2726.34,
+      "actual_price": 1804.79
+    },
+    {
+      "timestamp": "2026-01-24 13:45:00",
+      "predicted_price": 2692.06,
+      "actual_price": 1832.54
+    },
+    {
+      "timestamp": "2026-01-24 14:00:00",
+      "predicted_price": 2581.21,
+      "actual_price": 1851.64
+    },
+    {
+      "timestamp": "2026-01-24 14:15:00",
+      "predicted_price": 2549.78,
+      "actual_price": 1865.87
+    },
+    {
+      "timestamp": "2026-01-24 14:30:00",
+      "predicted_price": 2499.47,
+      "actual_price": 1929.77
+    },
+    {
+      "timestamp": "2026-01-24 14:45:00",
+      "predicted_price": 2422.63,
+      "actual_price": 1950.38
+    },
+    {
+      "timestamp": "2026-01-24 15:00:00",
+      "predicted_price": 2656.75,
+      "actual_price": 2250.8
+    },
+    {
+      "timestamp": "2026-01-24 15:15:00",
+      "predicted_price": 2518.32,
+      "actual_price": 2364.21
+    },
+    {
+      "timestamp": "2026-01-24 15:30:00",
+      "predicted_price": 2520.79,
+      "actual_price": 2470.39
+    },
+    {
+      "timestamp": "2026-01-24 15:45:00",
+      "predicted_price": 2559.26,
+      "actual_price": 2470.87
+    },
+    {
+      "timestamp": "2026-01-24 16:00:00",
+      "predicted_price": 2620.02,
+      "actual_price": 2461.59
+    },
+    {
+      "timestamp": "2026-01-24 16:15:00",
+      "predicted_price": 2734.3,
+      "actual_price": 2470.53
+    },
+    {
+      "timestamp": "2026-01-24 16:30:00",
+      "predicted_price": 2829.07,
+      "actual_price": 2830.7
+    },
+    {
+      "timestamp": "2026-01-24 16:45:00",
+      "predicted_price": 3178.66,
+      "actual_price": 2990.89
+    },
+    {
+      "timestamp": "2026-01-24 17:00:00",
+      "predicted_price": 3287.67,
+      "actual_price": 2980.28
+    },
+    {
+      "timestamp": "2026-01-24 17:15:00",
+      "predicted_price": 3560.21,
+      "actual_price": 3399.1
+    },
+    {
+      "timestamp": "2026-01-24 17:30:00",
+      "predicted_price": 3960.88,
+      "actual_price": 3519.33
+    },
+    {
+      "timestamp": "2026-01-24 17:45:00",
+      "predicted_price": 6189.68,
+      "actual_price": 4503.24
+    },
+    {
+      "timestamp": "2026-01-24 18:00:00",
+      "predicted_price": 8090.01,
+      "actual_price": 5999.09
+    },
+    {
+      "timestamp": "2026-01-24 18:15:00",
+      "predicted_price": 8447.83,
+      "actual_price": 6999.36
+    },
+    {
+      "timestamp": "2026-01-24 18:30:00",
+      "predicted_price": 8447.83,
+      "actual_price": 6001.86
+    },
+    {
+      "timestamp": "2026-01-24 18:45:00",
+      "predicted_price": 8038.81,
+      "actual_price": 5999.62
+    },
+    {
+      "timestamp": "2026-01-24 19:00:00",
+      "predicted_price": 7246.98,
+      "actual_price": 5920.05
+    },
+    {
+      "timestamp": "2026-01-24 19:15:00",
+      "predicted_price": 6767.74,
+      "actual_price": 4998.87
+    },
+    {
+      "timestamp": "2026-01-24 19:30:00",
+      "predicted_price": 4298.68,
+      "actual_price": 4300.77
+    },
+    {
+      "timestamp": "2026-01-24 19:45:00",
+      "predicted_price": 3868.48,
+      "actual_price": 3679.84
+    },
+    {
+      "timestamp": "2026-01-24 20:00:00",
+      "predicted_price": 3982.66,
+      "actual_price": 3501.35
+    },
+    {
+      "timestamp": "2026-01-24 20:15:00",
+      "predicted_price": 3946.1,
+      "actual_price": 3399.19
+    },
+    {
+      "timestamp": "2026-01-24 20:30:00",
+      "predicted_price": 3814.11,
+      "actual_price": 3259.59
+    },
+    {
+      "timestamp": "2026-01-24 20:45:00",
+      "predicted_price": 3634.52,
+      "actual_price": 3139.67
+    },
+    {
+      "timestamp": "2026-01-24 21:00:00",
+      "predicted_price": 3508.65,
+      "actual_price": 3139.62
+    },
+    {
+      "timestamp": "2026-01-24 21:15:00",
+      "predicted_price": 3487.34,
+      "actual_price": 2982.73
+    },
+    {
+      "timestamp": "2026-01-24 21:30:00",
+      "predicted_price": 3460.2,
+      "actual_price": 2970.88
+    },
+    {
+      "timestamp": "2026-01-24 21:45:00",
+      "predicted_price": 3471.04,
+      "actual_price": 2856.9
+    },
+    {
+      "timestamp": "2026-01-24 22:00:00",
+      "predicted_price": 3502.19,
+      "actual_price": 2519.91
+    },
+    {
+      "timestamp": "2026-01-24 22:15:00",
+      "predicted_price": 3450.1,
+      "actual_price": 2591.12
+    },
+    {
+      "timestamp": "2026-01-24 22:30:00",
+      "predicted_price": 3160.01,
+      "actual_price": 2501.87
+    },
+    {
+      "timestamp": "2026-01-24 22:45:00",
+      "predicted_price": 2997.38,
+      "actual_price": 2519.27
+    },
+    {
+      "timestamp": "2026-01-24 23:00:00",
+      "predicted_price": 2914.27,
+      "actual_price": 2461.63
+    },
+    {
+      "timestamp": "2026-01-24 23:15:00",
+      "predicted_price": 2863.99,
+      "actual_price": 2459.17
+    },
+    {
+      "timestamp": "2026-01-24 23:30:00",
+      "predicted_price": 2836.39,
+      "actual_price": 2400.49
+    },
+    {
+      "timestamp": "2026-01-24 23:45:00",
+      "predicted_price": 2825.24,
+      "actual_price": 2269.38
+    }
+  ],
+  "buy_signals": [
+    {
+      "time_block": 3,
+      "time": "00:30",
+      "price": 2608.41,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 4,
+      "time": "00:45",
+      "price": 2605.85,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 5,
+      "time": "01:00",
+      "price": 2608.41,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 6,
+      "time": "01:15",
+      "price": 2624.07,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 7,
+      "time": "01:30",
+      "price": 2618.39,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 8,
+      "time": "01:45",
+      "price": 2623.29,
+      "energy_MWh": 0.31,
+      "action": "BUY"
+    },
+    {
+      "time_block": 9,
+      "time": "02:00",
+      "price": 2608.41,
+      "energy_MWh": 0.02,
+      "action": "BUY"
+    },
+    {
+      "time_block": 10,
+      "time": "02:15",
+      "price": 2605.85,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 11,
+      "time": "02:30",
+      "price": 2608.8,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 12,
+      "time": "02:45",
+      "price": 2598.29,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 13,
+      "time": "03:00",
+      "price": 2587.27,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 14,
+      "time": "03:15",
+      "price": 2587.27,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 15,
+      "time": "03:30",
+      "price": 2577.8,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 16,
+      "time": "03:45",
+      "price": 2583.51,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 17,
+      "time": "04:00",
+      "price": 2553.81,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 18,
+      "time": "04:15",
+      "price": 2563.69,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    },
+    {
+      "time_block": 44,
+      "time": "10:45",
+      "price": 2625.85,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 49,
+      "time": "12:00",
+      "price": 2460.17,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 50,
+      "time": "12:15",
+      "price": 2460.17,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 51,
+      "time": "12:30",
+      "price": 2460.17,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 52,
+      "time": "12:45",
+      "price": 2511.47,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 57,
+      "time": "14:00",
+      "price": 2581.21,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 58,
+      "time": "14:15",
+      "price": 2549.78,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 59,
+      "time": "14:30",
+      "price": 2499.47,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 60,
+      "time": "14:45",
+      "price": 2422.63,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 62,
+      "time": "15:15",
+      "price": 2518.32,
+      "energy_MWh": 6.25,
+      "action": "BUY"
+    },
+    {
+      "time_block": 63,
+      "time": "15:30",
+      "price": 2520.79,
+      "energy_MWh": 0.62,
+      "action": "BUY"
+    },
+    {
+      "time_block": 64,
+      "time": "15:45",
+      "price": 2559.26,
+      "energy_MWh": 0.03,
+      "action": "BUY"
+    },
+    {
+      "time_block": 65,
+      "time": "16:00",
+      "price": 2620.02,
+      "energy_MWh": 0.0,
+      "action": "BUY"
+    }
+  ],
+  "sell_signals": [
+    {
+      "time_block": 26,
+      "time": "06:15",
+      "price": 3900.82,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 27,
+      "time": "06:30",
+      "price": 4318.74,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 28,
+      "time": "06:45",
+      "price": 4337.17,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 29,
+      "time": "07:00",
+      "price": 6711.79,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 30,
+      "time": "07:15",
+      "price": 6832.35,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 31,
+      "time": "07:30",
+      "price": 8900.98,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 32,
+      "time": "07:45",
+      "price": 9117.09,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 33,
+      "time": "08:00",
+      "price": 8883.61,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 34,
+      "time": "08:15",
+      "price": 6920.79,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 35,
+      "time": "08:30",
+      "price": 6318.24,
+      "energy_MWh": 0.79,
+      "action": "SELL"
+    },
+    {
+      "time_block": 70,
+      "time": "17:15",
+      "price": 3560.21,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 71,
+      "time": "17:30",
+      "price": 3960.88,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 72,
+      "time": "17:45",
+      "price": 6189.68,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 73,
+      "time": "18:00",
+      "price": 8090.01,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 74,
+      "time": "18:15",
+      "price": 8447.83,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 75,
+      "time": "18:30",
+      "price": 8447.83,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 76,
+      "time": "18:45",
+      "price": 8038.81,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 77,
+      "time": "19:00",
+      "price": 7246.98,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 78,
+      "time": "19:15",
+      "price": 6767.74,
+      "energy_MWh": 6.25,
+      "action": "SELL"
+    },
+    {
+      "time_block": 79,
+      "time": "19:30",
+      "price": 4298.68,
+      "energy_MWh": 0.79,
+      "action": "SELL"
+    }
+  ],
+  "summary": {
+    "forecast_date": "2026-01-24",
+    "generated_at": "2026-01-25T01:04:12.265014",
+    "prediction_accuracy": {
+      "mape_percent": 22.26,
+      "confidence_factor": 0.73
+    },
+    "profit_estimates": {
+      "optimistic": 530415.08,
+      "conservative": 385812.62,
+      "actual": 346977.5
+    },
+    "predicted_profit": {
+      "arbitrage_profit": 521602.58,
+      "ancillary_revenue": 8812.5,
+      "total_revenue": 530415.08,
+      "arbitrage_share_percent": 98.3,
+      "ancillary_share_percent": 1.7,
+      "total_energy_bought_MWh": 94.74,
+      "total_energy_sold_MWh": 114.08,
+      "buy_count": 29,
+      "sell_count": 20,
+      "ancillary_count": 47
+    },
+    "actual_profit": {
+      "arbitrage_profit": 338165.0,
+      "ancillary_revenue": 8812.5,
+      "total_revenue": 346977.5,
+      "arbitrage_share_percent": 97.5,
+      "ancillary_share_percent": 2.5,
+      "total_energy_bought_MWh": 100.99,
+      "total_energy_sold_MWh": 114.08,
+      "buy_count": 29,
+      "sell_count": 20,
+      "ancillary_count": 47
+    }
+  }
+}

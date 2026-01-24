@@ -1,5 +1,5 @@
 """
-DAM Price Inference - Predict prices for 25-01-2026
+DAM Price Inference - Predict prices for 24-01-2026
 ====================================================
 Uses trained models to forecast:
 1. Demand (15-min intervals)
@@ -14,7 +14,7 @@ import numpy as np
 from datetime import datetime, timedelta
 
 print("=" * 60)
-print("DAM PRICE INFERENCE - 25 January 2026")
+print("DAM PRICE INFERENCE - 24 January 2026")
 print("=" * 60)
 
 # ============================================================
@@ -56,9 +56,9 @@ print(f"   Wind:   {len(wind_hist)} rows")
 print(f"   DAM:    {len(dam_hist)} rows")
 
 # ============================================================
-# Create prediction DataFrame for 25-01-2026
+# Create prediction DataFrame for 24-01-2026
 # ============================================================
-target_date = "2026-01-25"
+target_date = "2026-01-24"
 target_dt = pd.to_datetime(target_date)
 
 print(f"\n{'=' * 60}")

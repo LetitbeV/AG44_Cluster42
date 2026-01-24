@@ -1,13 +1,42 @@
 import React, { useState } from 'react';
 import { Target, ArrowRight } from 'lucide-react';
 
+import axios from 'axios';
+
 const ManualTrade = ({ onTrade }) => {
     const [amount, setAmount] = useState(1);
     const [action, setAction] = useState('buy'); // buy or sell
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleExecute = () => {
-        onTrade({ action, amount });
-        alert(`Manual Trade Executed: ${action.toUpperCase()} ${amount} kWh`);
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+
+    const handleExecute = async () => {
+        setIsLoading(true);
+        try {
+            const token = localStorage.getItem('token');
+            // Default amount to 1 if empty or invalid
+            const tradeAmount = amount ? Number(amount) : 1;
+
+            const payload = {
+                action: action.toUpperCase(),
+                timestamp: new Date().toISOString(),
+                quantity: isNaN(tradeAmount) ? 1 : tradeAmount
+            };
+
+            const response = await axios.post(`${API_URL}/state/update`, payload, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            onTrade({ action, amount });
+            alert(`Manual Trade Executed: ${action.toUpperCase()} ${amount} kWh`);
+        } catch (error) {
+            console.error("Trade failed:", error);
+            alert(`Trade failed: ${error.response?.data?.message || error.message}`);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -71,20 +100,21 @@ const ManualTrade = ({ onTrade }) => {
 
                 <button
                     onClick={handleExecute}
+                    disabled={isLoading}
                     style={{
                         padding: '0.6rem 1rem',
-                        backgroundColor: 'var(--primary-green)',
+                        backgroundColor: isLoading ? '#374151' : 'var(--primary-green)',
                         border: 'none',
                         borderRadius: '8px',
-                        color: '#000',
+                        color: isLoading ? '#9ca3af' : '#000',
                         fontWeight: '600',
-                        cursor: 'pointer',
+                        cursor: isLoading ? 'not-allowed' : 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '0.5rem'
                     }}
                 >
-                    Execute <ArrowRight size={16} />
+                    {isLoading ? 'Executing...' : <>Execute <ArrowRight size={16} /></>}
                 </button>
             </div>
         </div>

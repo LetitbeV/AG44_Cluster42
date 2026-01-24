@@ -12,8 +12,9 @@ const StatCard = ({ label, value, subtext, subtextClass }) => (
     </div>
 );
 
-const StatsGrid = () => {
-    // Using static data from simulation/mockup for now
+const StatsGrid = ({ financials, market, system }) => {
+    if (!financials || !market || !system) return null;
+
     return (
         <div style={{
             display: 'grid',
@@ -23,25 +24,25 @@ const StatsGrid = () => {
         }}>
             <StatCard
                 label="Today's Revenue"
-                value="$142.50"
-                subtext="+12.4%"
-                subtextClass="positive"
+                value={`$${financials.revenue?.toFixed(2) || '0.00'}`}
+                subtext={`${financials.revenueChange > 0 ? '+' : ''}${financials.revenueChange}%`}
+                subtextClass={financials.revenueChange >= 0 ? 'positive' : 'negative'}
             />
             <StatCard
                 label="Energy Traded"
-                value="420 kWh"
-                subtext="+5.2%"
-                subtextClass="positive"
+                value={`${financials.energyTraded?.toFixed(1) || '0'} kWh`}
+                subtext={`${financials.energyChange > 0 ? '+' : ''}${financials.energyChange}%`}
+                subtextClass={financials.energyChange >= 0 ? 'positive' : 'negative'}
             />
             <StatCard
                 label="Peak Market Price"
-                value="$85.20"
-                subtext="-2.1%"
-                subtextClass="negative"
+                value={`$${market.peakPrice?.toFixed(2) || '0.00'}`}
+                subtext={`${market.priceChange > 0 ? '+' : ''}${market.priceChange}%`}
+                subtextClass={market.priceChange >= 0 ? 'positive' : 'negative'}
             />
             <StatCard
                 label="Battery Health"
-                value="98.2%"
+                value={`${system.health?.toFixed(1) || '100'}%`}
                 subtext="Optimal"
                 subtextClass="positive"
             />

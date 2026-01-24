@@ -8,12 +8,22 @@ import { useNavigate, Link } from 'react-router-dom';
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async () => {
-        await login(email, password);
-        // Navigation happens in App.jsx based on auth state, but for specific redirects we could do it here
+        setError('');
+        setIsLoading(true);
+        try {
+            await login(email, password);
+            navigate('/');
+        } catch (err) {
+            setError(err.response?.data?.message || err.message || 'Failed to login');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -29,6 +39,20 @@ const LoginPage = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     icon={Mail}
                 />
+
+                {error && (
+                    <div style={{
+                        color: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        padding: '0.75rem',
+                        borderRadius: '8px',
+                        marginBottom: '1rem',
+                        fontSize: '0.9rem',
+                        textAlign: 'center'
+                    }}>
+                        {error}
+                    </div>
+                )}
 
                 <div style={{ marginBottom: '1.5rem' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
@@ -52,15 +76,20 @@ const LoginPage = () => {
 
                 <button
                     onClick={handleSubmit}
+                    disabled={isLoading}
                     style={{
                         width: '100%', padding: '1rem',
-                        backgroundColor: 'var(--primary-green)', color: '#000',
+                        backgroundColor: isLoading ? '#374151' : 'var(--primary-green)',
+                        color: isLoading ? '#9ca3af' : '#000',
                         border: 'none', borderRadius: '12px',
-                        fontSize: '1rem', fontWeight: '800', cursor: 'pointer',
-                        marginBottom: '2rem', boxShadow: '0 0 20px rgba(34, 197, 94, 0.4)'
+                        fontSize: '1rem', fontWeight: '800',
+                        cursor: isLoading ? 'not-allowed' : 'pointer',
+                        marginBottom: '2rem',
+                        boxShadow: isLoading ? 'none' : '0 0 20px rgba(34, 197, 94, 0.4)',
+                        transition: 'all 0.2s ease'
                     }}
                 >
-                    LOGIN →
+                    {isLoading ? 'LoGGIN IN...' : 'LOGIN →'}
                 </button>
 
                 <div style={{ borderTop: '1px solid #333', margin: '0 -2rem 1.5rem -2rem' }}></div>

@@ -50,7 +50,7 @@ const BottomStats = ({ stats }) => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--primary-green)' }}>
-                        +${stats.estimatedPnL.value.toLocaleString()}
+                        +₹{stats.estimatedPnL.value.toLocaleString()}
                     </div>
                     <span style={{
                         fontSize: '0.75rem', fontWeight: '700',

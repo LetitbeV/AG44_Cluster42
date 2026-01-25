@@ -56,12 +56,12 @@ const RegisterPage = () => {
                     icon={RefreshCw}
                 />
 
-                <div style={{ display: 'flex', alignItems: 'start', gap: '0.75rem', marginBottom: '2rem' }}>
+                {/* <div style={{ display: 'flex', alignItems: 'start', gap: '0.75rem', marginBottom: '2rem' }}>
                     <input type="checkbox" style={{ accentColor: 'var(--primary-green)', width: '16px', height: '16px', cursor: 'pointer', marginTop: '3px' }} />
                     <span style={{ fontSize: '0.85rem', color: '#9ca3af', lineHeight: '1.4' }}>
                         I agree to the <span style={{ color: 'var(--primary-green)' }}>Terms of Service</span> and <span style={{ color: 'var(--primary-green)' }}>Privacy Policy</span>.
                     </span>
-                </div>
+                </div> */}
 
                 <button
                     onClick={handleSubmit}

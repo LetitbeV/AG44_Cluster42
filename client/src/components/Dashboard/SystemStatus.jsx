@@ -1,7 +1,11 @@
 import React from 'react';
 import { Battery, Zap, Thermometer, RefreshCw } from 'lucide-react';
 
-const SystemStatus = ({ batteryLevel, action }) => {
+const SystemStatus = ({ system }) => {
+    if (!system) return <div className="glass-panel">Loading System Status...</div>;
+
+    const { soc, rate, health, cycles, temp, status } = system;
+
     return (
         <div className="glass-panel" style={{ padding: '1.5rem', height: '100%' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
@@ -14,15 +18,15 @@ const SystemStatus = ({ batteryLevel, action }) => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1rem' }}>
                 <div>
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>STATE OF CHARGE (SOC)</div>
-                    <div style={{ fontSize: '2.5rem', fontWeight: '800', lineHeight: 1.1 }}>{Math.round(batteryLevel)}%</div>
+                    <div style={{ fontSize: '2.5rem', fontWeight: '800', lineHeight: 1.1 }}>{Math.round(soc)}%</div>
                 </div>
                 <div style={{ textAlign: 'right' }}>
                     <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', letterSpacing: '0.5px' }}>RATE</div>
-                    <div style={{ fontSize: '1rem', fontWeight: '700', color: action === 'DISCHARGE' ? '#ef4444' : 'var(--primary-green)' }}>
-                        {action === 'CHARGE' ? '-5.2kW' : action === 'DISCHARGE' ? '5.2kW' : '0kW'}
+                    <div style={{ fontSize: '1rem', fontWeight: '700', color: status === 'DISCHARGING' ? '#ef4444' : 'var(--primary-green)' }}>
+                        {rate ? `${rate.toFixed(1)}kW` : '0kW'}
                     </div>
-                    <div style={{ fontSize: '0.8rem', color: action === 'DISCHARGE' ? '#ef4444' : 'var(--primary-green)' }}>
-                        ({action === 'CHARGE' ? 'Charging' : action === 'DISCHARGE' ? 'Discharging' : 'Standby'})
+                    <div style={{ fontSize: '0.8rem', color: status === 'DISCHARGING' ? '#ef4444' : 'var(--primary-green)' }}>
+                        ({status === 'CHARGING' ? 'Charging' : status === 'DISCHARGING' ? 'Discharging' : 'Standby'})
                     </div>
                 </div>
             </div>
@@ -37,7 +41,7 @@ const SystemStatus = ({ batteryLevel, action }) => {
                 marginBottom: '1.5rem'
             }}>
                 <div style={{
-                    width: `${batteryLevel}%`,
+                    width: `${soc}%`,
                     height: '100%',
                     backgroundColor: 'var(--primary-green)',
                     boxShadow: '0 0 10px var(--primary-green)',
@@ -49,13 +53,13 @@ const SystemStatus = ({ batteryLevel, action }) => {
                 <div style={{ backgroundColor: '#1a1a1a', padding: '0.75rem', borderRadius: '10px' }}>
                     <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '4px' }}>TEMP</div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600' }}>
-                        <Thermometer size={16} /> 24.5°C
+                        <Thermometer size={16} /> {temp}°C
                     </div>
                 </div>
                 <div style={{ backgroundColor: '#1a1a1a', padding: '0.75rem', borderRadius: '10px' }}>
                     <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '4px' }}>CYCLES</div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600' }}>
-                        <RefreshCw size={16} /> 1,248
+                        <RefreshCw size={16} /> {cycles}
                     </div>
                 </div>
             </div>

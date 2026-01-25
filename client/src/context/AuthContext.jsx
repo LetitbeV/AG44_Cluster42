@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 const AuthContext = createContext();
 
@@ -17,28 +18,51 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({ name: '', email: '' });
     const [batteryConfig, setBatteryConfig] = useState(null);
 
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+
     const login = async (email, password) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                setIsAuthenticated(true);
-                setIsFirstLogin(true); // Always force first login flow for this demo request
-                setUser({ name: 'Alex Rivera', email });
-                localStorage.setItem('sm_auth', 'true');
-                resolve();
-            }, 800); // Fake delay
-        });
+        try {
+            const response = await axios.post(`${API_URL}/auth/login`, {
+                email,
+                password
+            });
+
+            // Assuming backend returns user data and token
+            const { user, token } = response.data;
+
+            setIsAuthenticated(true);
+            setIsFirstLogin(false); // Login implies returning user, usually
+            setUser(user || { email }); // Fallback if user object isn't full
+            localStorage.setItem('sm_auth', 'true');
+            if (token) localStorage.setItem('token', token);
+            return response.data;
+        } catch (error) {
+            console.error('Login failed:', error);
+            throw error;
+        }
     };
 
     const register = async (name, email, password) => {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                setIsAuthenticated(true);
-                setIsFirstLogin(true);
-                setUser({ name, email });
-                localStorage.setItem('sm_auth', 'true');
-                resolve();
-            }, 1000);
-        });
+        try {
+            const response = await axios.post(`${API_URL}/auth/register`, {
+                name,
+                email,
+                password
+            });
+
+            // Assuming backend returns user data and token
+            const { user, token } = response.data;
+
+            setIsAuthenticated(true);
+            setIsFirstLogin(true);
+            setUser(user || { name, email });
+            localStorage.setItem('sm_auth', 'true');
+            if (token) localStorage.setItem('token', token);
+            return response.data;
+        } catch (error) {
+            console.error('Registration failed:', error);
+            throw error;
+        }
     };
 
     const logout = () => {
@@ -46,11 +70,29 @@ export const AuthProvider = ({ children }) => {
         setIsFirstLogin(false);
         setUser(null);
         localStorage.removeItem('sm_auth');
+        localStorage.removeItem('token');
     };
 
     const completeOnboarding = (config) => {
         setBatteryConfig(config);
         setIsFirstLogin(false);
+    };
+
+    const setupBattery = async (config) => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`${API_URL}/battery`, config, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            setBatteryConfig(config);
+            setIsFirstLogin(false);
+            return response.data;
+        } catch (error) {
+            console.error('Battery setup failed:', error);
+            throw error;
+        }
     };
 
     return (
@@ -62,7 +104,8 @@ export const AuthProvider = ({ children }) => {
             login,
             register,
             logout,
-            completeOnboarding
+            completeOnboarding,
+            setupBattery
         }}>
             {children}
         </AuthContext.Provider>

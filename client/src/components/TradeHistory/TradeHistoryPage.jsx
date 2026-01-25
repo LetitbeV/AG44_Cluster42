@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import FilterPanel from './FilterPanel';
 import TradeTable from './TradeTable';
 import SummarySection from './SummarySection';
 import { getTradeHistoryData } from '../../lib/mockTradeHistoryData';
@@ -28,7 +27,7 @@ const TradeHistoryPage = () => {
                     <p style={{ color: 'var(--text-muted)' }}>Audit and manage historical energy transactions for battery storage assets across wholesale markets.</p>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem' }}>
+                {/* <div style={{ display: 'flex', gap: '1rem' }}>
                     <button style={{
                         display: 'flex', alignItems: 'center', gap: '0.5rem',
                         padding: '0.75rem 1.25rem', backgroundColor: '#1f2937',
@@ -37,21 +36,12 @@ const TradeHistoryPage = () => {
                         <Calendar size={18} />
                         Last 30 Days
                     </button>
-                    <button style={{
-                        display: 'flex', alignItems: 'center', gap: '0.5rem',
-                        padding: '0.75rem 1.25rem', backgroundColor: 'var(--primary-green)',
-                        border: 'none', borderRadius: '12px', color: '#000', fontWeight: '700', cursor: 'pointer',
-                        boxShadow: '0 0 10px var(--primary-green-glow)'
-                    }}>
-                        <Download size={18} />
-                        Export CSV
-                    </button>
-                </div>
+                </div> */}
             </header>
 
             {/* Main Content Layout */}
             <div style={{ display: 'flex', gap: '2rem' }}>
-                <FilterPanel assets={data.filters.assets} />
+                {/* FilterPanel removed */}
 
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <TradeTable trades={data.trades} />

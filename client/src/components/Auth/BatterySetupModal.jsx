@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Battery, Zap } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 
 const BatterySetupModal = ({ onComplete }) => {
     const [capacity, setCapacity] = useState('');
@@ -8,14 +9,26 @@ const BatterySetupModal = ({ onComplete }) => {
     const [dischargeRate, setDischargeRate] = useState('');
     const [dischargeEff, setDischargeEff] = useState('');
 
-    const handleComplete = () => {
-        onComplete({
-            capacity,
-            chargeRate,
-            chargeEff,
-            dischargeRate,
-            dischargeEff
-        });
+    const [isLoading, setIsLoading] = useState(false);
+    const { setupBattery } = useAuth();
+
+    const handleComplete = async () => {
+        setIsLoading(true);
+        try {
+            await setupBattery({
+                maxCapacity: Number(capacity),
+                chargeRate: Number(chargeRate),
+                dischargeRate: Number(dischargeRate),
+                chargeEfficiency: Number(chargeEff) / 100, // Convert percentage
+                dischargeEfficiency: Number(dischargeEff) / 100 // Convert percentage
+            });
+            if (onComplete) onComplete();
+        } catch (error) {
+            console.error("Failed to setup battery", error);
+            // Optionally set an error state here
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -157,15 +170,18 @@ const BatterySetupModal = ({ onComplete }) => {
 
                 <button
                     onClick={handleComplete}
+                    disabled={isLoading}
                     style={{
                         width: '100%', padding: '1rem',
-                        backgroundColor: 'var(--primary-green)', color: '#000',
+                        backgroundColor: isLoading ? '#374151' : 'var(--primary-green)',
+                        color: isLoading ? '#9ca3af' : '#000',
                         border: 'none', borderRadius: '12px',
-                        fontSize: '1rem', fontWeight: '700', cursor: 'pointer',
+                        fontSize: '1rem', fontWeight: '700',
+                        cursor: isLoading ? 'not-allowed' : 'pointer',
                         marginBottom: '1rem'
                     }}
                 >
-                    Complete Setup
+                    {isLoading ? 'Saving...' : 'Complete Setup'}
                 </button>
                 <button
                     onClick={() => onComplete(null)}

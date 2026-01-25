@@ -16,7 +16,7 @@ const AIInsights = ({ recommendation, onExecute }) => {
                 <h3 style={{ fontSize: '1.1rem', fontWeight: '600' }}>AI Market Insights</h3>
             </div>
 
-            <div style={{
+            {/* <div style={{
                 backgroundColor: accentColor,
                 color: '#000',
                 padding: '0.5rem 1rem',
@@ -27,42 +27,36 @@ const AIInsights = ({ recommendation, onExecute }) => {
                 marginBottom: '1rem'
             }}>
                 <span style={{ fontWeight: '800', fontSize: '0.9rem' }}>
-                    RECOMMENDATION: {recommendation.type}
+                    RECOMMENDATION: {recommendation.type || 'HOLD'}
                 </span>
                 <span style={{ fontSize: '0.75rem', fontWeight: '600' }}>
-                    Confidence: {recommendation.confidence}%
+                    Confidence: {recommendation.confidence || 85}%
                 </span>
-            </div>
+            </div> */}
 
-            <div style={{ flex: 1 }}>
-                <p style={{ fontSize: '0.9rem', lineHeight: '1.5', color: '#e5e5e5' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {/* <p style={{ fontSize: '0.9rem', lineHeight: '1.5', color: '#e5e5e5' }}>
                     <span style={{ color: 'var(--text-muted)' }}>Market Condition: </span>
-                    <span style={{ color: accentColor, fontWeight: '600' }}>{recommendation.condition}</span>.
-                    {' '}{recommendation.message}
-                </p>
+                    <span style={{ color: accentColor, fontWeight: '600' }}>{recommendation.condition || 'Volatile'}</span>.
+                    {' '}{recommendation.message || 'Market is changing rapidly.'}
+                </p> */}
+
+                {recommendation.best_buy_time && (
+                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem', backgroundColor: 'rgba(34, 197, 94, 0.1)', borderRadius: '6px', border: '1px solid rgba(34, 197, 94, 0.2)' }}>
+                        <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Best Buy Time</span>
+                        <span style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--primary-green)' }}>{recommendation.best_buy_time}</span>
+                    </div>
+                )}
+
+                {recommendation.best_sell_time && (
+                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem', backgroundColor: 'rgba(239, 68, 68, 0.1)', borderRadius: '6px', border: '1px solid rgba(239, 68, 68, 0.2)' }}>
+                        <span style={{ fontSize: '0.8rem', color: '#9ca3af' }}>Best Sell Time</span>
+                        <span style={{ fontSize: '0.9rem', fontWeight: '700', color: '#ef4444' }}>{recommendation.best_sell_time}</span>
+                    </div>
+                )}
             </div>
 
-            <button
-                onClick={onExecute}
-                style={{
-                    width: '100%',
-                    marginTop: '1.5rem',
-                    backgroundColor: 'var(--primary-green)',
-                    border: 'none',
-                    padding: '0.75rem',
-                    borderRadius: '10px',
-                    fontWeight: '700',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    color: '#000',
-                    boxShadow: '0 0 15px var(--primary-green-glow)'
-                }}
-            >
-                Execute Strategy
-            </button>
+            {/* Button removed as requested */}
         </div>
     );
 };

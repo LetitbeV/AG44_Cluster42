@@ -29,7 +29,7 @@ const ManualTrade = ({ onTrade }) => {
                 }
             });
 
-            onTrade({ action, amount });
+            onTrade(response.data); // Pass full response including batteryState
             alert(`Manual Trade Executed: ${action.toUpperCase()} ${amount} kWh`);
         } catch (error) {
             console.error("Trade failed:", error);

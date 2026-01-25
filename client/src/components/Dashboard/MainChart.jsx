@@ -56,7 +56,7 @@ const MainChart = ({ data, recommendations }) => {
                             }}
                         />
                         <YAxis
-                            label={{ value: 'Price ($/MWh)', angle: -90, position: 'insideLeft', fill: '#6b7280', fontSize: 10 }}
+                            label={{ value: 'Price (₹/MWh)', angle: -90, position: 'insideLeft', fill: '#6b7280', fontSize: 10 }}
                             stroke="#6b7280"
                             fontSize={12}
                             tickLine={false}

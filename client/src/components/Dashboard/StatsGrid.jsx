@@ -24,7 +24,7 @@ const StatsGrid = ({ financials, market, system }) => {
         }}>
             <StatCard
                 label="Today's Revenue"
-                value={`$${financials.revenue?.toFixed(2) || '0.00'}`}
+                value={`₹${financials.revenue?.toFixed(2) || '0.00'}`}
                 subtext={`${financials.revenueChange > 0 ? '+' : ''}${financials.revenueChange}%`}
                 subtextClass={financials.revenueChange >= 0 ? 'positive' : 'negative'}
             />
@@ -36,7 +36,7 @@ const StatsGrid = ({ financials, market, system }) => {
             />
             <StatCard
                 label="Peak Market Price"
-                value={`$${market.peakPrice?.toFixed(2) || '0.00'}`}
+                value={`₹${market.peakPrice?.toFixed(2) || '0.00'}`}
                 subtext={`${market.priceChange > 0 ? '+' : ''}${market.priceChange}%`}
                 subtextClass={market.priceChange >= 0 ? 'positive' : 'negative'}
             />

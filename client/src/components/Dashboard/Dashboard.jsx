@@ -43,7 +43,22 @@ const Dashboard = ({ isManualMode }) => {
             try {
                 const response = await axios.get('http://localhost:5000/api/prices');
                 if (response.data && response.data.prices) {
-                    setMarketData(response.data.prices);
+                    const prices = response.data.prices;
+                    setMarketData(prices);
+
+                    // Calculate Peak Price from actual_price
+                    const maxPrice = Math.max(...prices.map(p => p.actual_price || 0));
+
+                    setDashboardData(prev => {
+                        if (!prev) return null; // Wait for initial dashboard load
+                        return {
+                            ...prev,
+                            market: {
+                                ...prev.market,
+                                peakPrice: maxPrice
+                            }
+                        };
+                    });
                 }
             } catch (error) {
                 console.error("Failed to fetch price data", error);
@@ -68,26 +83,44 @@ const Dashboard = ({ isManualMode }) => {
 
     const handleManualTrade = (data) => {
         // data contains { batteryState, transaction }
-        if (data && data.batteryState) {
+        if (data && data.batteryState && data.transaction) {
             const b = data.batteryState;
-            // Calculate SOC if not provided explicitly as %, typically current/capacity * 100
+            const t = data.transaction;
+
+            // Calculate SOC 
             const newSoc = (b.current_energy_kwh / b.effective_capacity_kwh) * 100;
 
-            setDashboardData(prev => ({
-                ...prev,
-                system: {
-                    ...prev.system,
-                    soc: newSoc,
-                    rate: b.currentPower, // Map currentPower to rate
-                    status: b.status,
-                    temp: b.temperature,
-                    cycles: b.cycle_count
-                    // health might assume same or come from b.health
-                }
-            }));
-            console.log("Updated system state from trade:", b);
+            setDashboardData(prev => {
+                const currentRevenue = prev.financials?.revenue || 0;
+                const additionalRevenue = t.action === 'SELL' ? (t.units * t.price) : 0;
+
+                const currentEnergy = prev.financials?.energyTraded || 0; // Corrected: Energy is in financials
+                const currentPeak = prev.market?.peakPrice || 0;
+
+                return {
+                    ...prev,
+                    financials: {
+                        ...prev.financials,
+                        revenue: currentRevenue + additionalRevenue,
+                        energyTraded: currentEnergy + t.units
+                    },
+                    market: {
+                        ...prev.market,
+                        peakPrice: Math.max(currentPeak, t.price)
+                    },
+                    system: {
+                        ...prev.system,
+                        soc: newSoc,
+                        rate: b.currentPower,
+                        status: b.status,
+                        temp: b.temperature,
+                        cycles: b.cycle_count,
+                        health: b.health
+                    }
+                };
+            });
+            console.log("Updated full dashboard state from trade:", data);
         } else {
-            // Fallback to fetch if no data passed (e.g. legacy props)
             fetchDashboardData();
         }
     };

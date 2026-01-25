@@ -16,8 +16,8 @@ const fetchPrices = async () => {
         const response = await axios.get('http://localhost:5000/api/prices');
         // External API returns: { count: 96, forecast_date: "...", prices: [ { timestamp, actual_price, predicted_price } ] }
 
-        if (response.data && response.data.prices) {
-            priceCache = response.data.prices;
+        if (response.data) {
+            priceCache = response.data; // Cache full object
             lastFetchTime = now;
             return priceCache;
         } else {
@@ -46,7 +46,8 @@ const getPriceForDate = async (dateStringOrDate) => {
     const roundedMinutes = Math.floor(minutes / 15) * 15;
     targetDate.setMinutes(roundedMinutes, 0, 0);
 
-    const prices = await fetchPrices();
+    const data = await fetchPrices();
+    const prices = data.prices || [];
 
     // Find matching price
     // We compare timestamps. The external API uses local strings "YYYY-MM-DD HH:mm:ss".

@@ -37,12 +37,59 @@ const Dashboard = ({ isManualMode }) => {
         setRecommendation(getAIRecommendation(currentPrice));
 
         fetchDashboardData();
+
+        // Fetch Price Data
+        const fetchPriceData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/prices');
+                if (response.data && response.data.prices) {
+                    setMarketData(response.data.prices);
+                }
+            } catch (error) {
+                console.error("Failed to fetch price data", error);
+            }
+        };
+
+        // Fetch Recommendations
+        const fetchRecommendations = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/recommendations');
+                if (response.data) {
+                    setRecommendation(response.data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch recommendations", error);
+            }
+        };
+
+        fetchPriceData();
+        fetchRecommendations();
     }, []);
 
-    const handleManualTrade = ({ action, amount }) => {
-        console.log(`Manual override: ${action} ${amount}kWh`);
-        // Refresh dashboard data to see updated SOC, etc.
-        fetchDashboardData();
+    const handleManualTrade = (data) => {
+        // data contains { batteryState, transaction }
+        if (data && data.batteryState) {
+            const b = data.batteryState;
+            // Calculate SOC if not provided explicitly as %, typically current/capacity * 100
+            const newSoc = (b.current_energy_kwh / b.effective_capacity_kwh) * 100;
+
+            setDashboardData(prev => ({
+                ...prev,
+                system: {
+                    ...prev.system,
+                    soc: newSoc,
+                    rate: b.currentPower, // Map currentPower to rate
+                    status: b.status,
+                    temp: b.temperature,
+                    cycles: b.cycle_count
+                    // health might assume same or come from b.health
+                }
+            }));
+            console.log("Updated system state from trade:", b);
+        } else {
+            // Fallback to fetch if no data passed (e.g. legacy props)
+            fetchDashboardData();
+        }
     };
 
     if (!dashboardData) return <div style={{ padding: '2rem' }}>Loading Dashboard...</div>;
@@ -62,7 +109,7 @@ const Dashboard = ({ isManualMode }) => {
                 minHeight: '400px',
                 marginBottom: '1.5rem'
             }}>
-                <MainChart data={marketData} />
+                <MainChart data={marketData} recommendations={recommendation} />
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     <div style={{ flex: 1 }}>

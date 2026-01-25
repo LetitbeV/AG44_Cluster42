@@ -50,12 +50,12 @@ const SystemStatus = ({ system }) => {
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                <div style={{ backgroundColor: '#1a1a1a', padding: '0.75rem', borderRadius: '10px' }}>
+                {/* <div style={{ backgroundColor: '#1a1a1a', padding: '0.75rem', borderRadius: '10px' }}>
                     <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '4px' }}>TEMP</div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600' }}>
                         <Thermometer size={16} /> {temp}°C
                     </div>
-                </div>
+                </div> */}
                 <div style={{ backgroundColor: '#1a1a1a', padding: '0.75rem', borderRadius: '10px' }}>
                     <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '4px' }}>CYCLES</div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600' }}>

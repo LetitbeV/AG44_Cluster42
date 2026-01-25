@@ -55,7 +55,7 @@ const PriceActionChart = ({ data }) => {
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
                         <XAxis dataKey="time" stroke="#6b7280" fontSize={12} tickLine={false} axisLine={false} interval={3} />
-                        <YAxis stroke="#6b7280" fontSize={12} tickLine={false} axisLine={false} unit="$" />
+                        <YAxis stroke="#6b7280" fontSize={12} tickLine={false} axisLine={false} unit="₹" />
                         <Tooltip
                             contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '8px' }}
                             itemStyle={{ fontSize: '12px' }}

@@ -58,8 +58,8 @@ const TradeTable = () => {
                             <th style={{ padding: '1rem', fontWeight: '700' }}>ACTION</th>
                             <th style={{ padding: '1rem', fontWeight: '700' }}>ASSET ID</th>
                             <th style={{ padding: '1rem', fontWeight: '700' }}>ENERGY (KWH)</th>
-                            <th style={{ padding: '1rem', fontWeight: '700' }}>PRICE/KWH</th>
-                            <th style={{ padding: '1rem', fontWeight: '700' }}>TOTAL VALUE</th>
+                            <th style={{ padding: '1rem', fontWeight: '700' }}>PRICE/KWH (₹)</th>
+                            <th style={{ padding: '1rem', fontWeight: '700' }}>TOTAL VALUE (₹)</th>
                             <th style={{ padding: '1rem', fontWeight: '700' }}>STATUS</th>
                         </tr>
                     </thead>
@@ -90,8 +90,8 @@ const TradeTable = () => {
                                     </td>
                                     <td style={{ padding: '1rem', color: '#9ca3af' }}>{trade.asset}</td>
                                     <td style={{ padding: '1rem', fontWeight: '600' }}>{trade.energy.toLocaleString()}</td>
-                                    <td style={{ padding: '1rem' }}>${trade.price}</td>
-                                    <td style={{ padding: '1rem', fontWeight: '700' }}>${trade.value}</td>
+                                    <td style={{ padding: '1rem' }}>₹{trade.price}</td>
+                                    <td style={{ padding: '1rem', fontWeight: '700' }}>₹{trade.value}</td>
                                     <td style={{ padding: '1rem' }}>
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: trade.status === 'Settled' ? 'var(--primary-green)' : '#fbbf24' }}>
                                             {trade.status === 'Settled' ? <CheckCircle size={14} /> : <Clock size={14} />}

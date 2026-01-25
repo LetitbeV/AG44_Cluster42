@@ -35,28 +35,28 @@ const KPICards = ({ data }) => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
             <KPICard
                 title="Total Revenue"
-                value={`$${data.totalRevenue.value.toLocaleString()}`}
+                value={`₹${data.totalRevenue.value.toLocaleString()}`}
                 change={data.totalRevenue.change}
                 icon={Wallet}
                 isPositive={data.totalRevenue.trend === 'up'}
             />
             <KPICard
                 title="Total Profit"
-                value={`+$${data.totalProfit.value.toLocaleString()}`}
+                value={`+₹${data.totalProfit.value.toLocaleString()}`}
                 change={data.totalProfit.change}
                 icon={TrendingUp}
                 isPositive={data.totalProfit.trend === 'up'}
             />
             <KPICard
                 title="Avg Buy Price"
-                value={`$${data.avgBuyPrice.value}/MWh`}
+                value={`₹${data.avgBuyPrice.value}/MWh`}
                 change={data.avgBuyPrice.change}
                 icon={ShoppingCart}
                 isPositive={true} // Context specific
             />
             <KPICard
                 title="Avg Sell Price"
-                value={`$${data.avgSellPrice.value}/MWh`}
+                value={`₹${data.avgSellPrice.value}/MWh`}
                 change={data.avgSellPrice.change}
                 icon={Tag}
                 isPositive={data.avgSellPrice.trend === 'up'}

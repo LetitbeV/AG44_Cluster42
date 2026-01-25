@@ -43,20 +43,20 @@ const KPIGrid = ({ data }) => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '1.5rem' }}>
             <MarketKPICard
                 title="Current Price"
-                value={`$${data.currentPrice.value}`}
+                value={`₹${data.currentPrice.value}`}
                 subtext={`+${data.currentPrice.change}%`}
                 icon={Wallet}
                 isPositive={true}
             />
             <MarketKPICard
                 title="Daily High"
-                value={`$${data.dailyHigh.value}`}
+                value={`₹${data.dailyHigh.value}`}
                 timestamp={data.dailyHigh.timestamp}
                 icon={TrendingUp}
             />
             <MarketKPICard
                 title="Daily Low"
-                value={`$${data.dailyLow.value}`}
+                value={`₹${data.dailyLow.value}`}
                 timestamp={data.dailyLow.timestamp}
                 icon={TrendingDown}
             />

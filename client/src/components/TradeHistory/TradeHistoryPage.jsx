@@ -45,7 +45,7 @@ const TradeHistoryPage = () => {
 
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <TradeTable trades={data.trades} />
-                    <SummarySection data={data.summary} />
+                    {/* <SummarySection data={data.summary} /> */}
                 </div>
             </div>
 

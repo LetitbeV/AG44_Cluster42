@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutDashboard, History, Zap, BarChart, Settings, LogOut, User, DollarSign } from 'lucide-react';
+import { LayoutDashboard, History, Zap, BarChart, Settings, LogOut, User, IndianRupee } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -10,9 +10,25 @@ const Sidebar = () => {
         { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
         { icon: History, label: 'Trade History', path: '/history' },
         { icon: Zap, label: 'Mission & Insights', path: '/mission' },
-        { icon: DollarSign, label: 'Revenue', path: '/revenue' },
+        { icon: IndianRupee, label: 'Revenue', path: '/revenue' },
         { icon: BarChart, label: 'Market Analysis', path: '/market' },
     ];
+
+    const handleLogout = () => {
+        // Clear Local Storage
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // Clear Cookies
+        document.cookie.split(";").forEach((c) => {
+            document.cookie = c
+                .replace(/^ +/, "")
+                .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+
+        // Redirect to Login
+        window.location.href = '/login';
+    };
 
     return (
         <aside style={{
@@ -83,24 +99,26 @@ const Sidebar = () => {
                         <User size={20} color="#fff" />
                     </div>
                     <div>
-                        <div style={{ fontSize: '0.9rem', fontWeight: '600' }}>Alex Rivera</div>
+                        <div style={{ fontSize: '0.9rem', fontWeight: '600' }}>Cluster42</div>
                         <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Prosumer Plan</div>
                     </div>
                 </div>
-                <button style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '0.5rem',
-                    padding: '0.5rem',
-                    backgroundColor: 'rgba(255,255,255,0.05)',
-                    border: 'none',
-                    borderRadius: '8px',
-                    color: 'var(--text-muted)',
-                    cursor: 'pointer',
-                    fontSize: '0.8rem'
-                }}>
+                <button
+                    onClick={handleLogout}
+                    style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.5rem',
+                        padding: '0.5rem',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        color: 'var(--text-muted)',
+                        cursor: 'pointer',
+                        fontSize: '0.8rem'
+                    }}>
                     <LogOut size={16} /> Logout
                 </button>
             </div>

@@ -70,7 +70,7 @@ const updateState = async (req, res) => {
 
         // 6. Validation
         // Allow tiny tolerance for floating point errors
-        if (newEnergy < 0) {
+        if (newEnergy < 0.2 * batteryState.effective_capacity_kwh) {
             return res.status(400).json({
                 message: 'Invalid action: Battery would be empty',
                 current: batteryState.current_energy_kwh,
@@ -79,7 +79,7 @@ const updateState = async (req, res) => {
             });
         }
 
-        if (newEnergy > batteryState.effective_capacity_kwh) {
+        if (newEnergy > 0.8 * batteryState.effective_capacity_kwh) {
             return res.status(400).json({
                 message: 'Invalid action: Battery would overcharge',
                 current: batteryState.current_energy_kwh,

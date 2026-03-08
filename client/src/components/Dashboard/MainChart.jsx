@@ -12,7 +12,7 @@ const MainChart = ({ data, recommendations }) => {
         <div className="glass-panel" style={{ padding: '1.5rem', height: '100%', minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                 <div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600' }}>Electricity Market Price vs. Battery Level</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: '600' }}>Electricity Market Price vs. Predicted Price</h3>
                     <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Automated trades based on AI forecasting</p>
                 </div>
 

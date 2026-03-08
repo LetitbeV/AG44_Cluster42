@@ -1,0 +1,28 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: shockmarket_mongodb
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    # restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    
+  backend:
+    build: ./Backend
+    container_name: ShockMarket_Backend
+    extra_hosts:              # for all OS
+      - "localhost:host-gateway"
+    # networ_mode: host       # only works for linux
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://root:pass@mongodb:27017/shockmarket?authSource=admin
+    ports:
+      - "8000:8000"
+
+volumes:
+  mongo_data:

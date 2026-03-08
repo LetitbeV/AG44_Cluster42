@@ -2,9 +2,11 @@ services:
   mongodb:
     image: mongo
     container_name: shockmarket_mongodb
+    volumes:
+      - mongo_data:/data/db
     ports:
       - "27017:27017"
-    restart: always
+    # restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: pass
@@ -21,3 +23,6 @@ services:
       MONGO_URI: mongodb://root:pass@mongodb:27017/shockmarket?authSource=admin
     ports:
       - "8000:8000"
+
+volumes:
+  mongo_data:
